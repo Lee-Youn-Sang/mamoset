@@ -13,7 +13,7 @@ logo_time = 0.0
 def enter():
     global image
     open_canvas()
-    image = load_image('Ly_company.png')
+    image = load_image('image\\Ly_company.png')
     pass
 
 

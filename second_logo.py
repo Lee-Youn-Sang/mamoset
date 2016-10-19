@@ -8,14 +8,12 @@ image = None
 
 def enter():
     global image
-    image = load_image('lion_il.png')
-    pass
+    image = load_image('image\\lion_il.png')
 
 
 def exit():
     global image
     del(image)
-    pass
 
 
 def handle_events():
@@ -28,14 +26,12 @@ def handle_events():
                 game_framework.quit()
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
                 game_framework.change_state(game)
-    pass
 
 
 def draw():
     clear_canvas()
     image.draw(400, 300)
     update_canvas()
-    pass
 
 
 def update():

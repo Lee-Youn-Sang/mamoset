@@ -62,8 +62,12 @@ def push_state(state):
 def pop_state():
     global stack
     if (len(stack) > 0):
+        # execute the current state's exit function
         stack[-1].exit()
+        # remove the current state
         stack.pop()
+
+    # execute resume function of the previous state
     if (len(stack) > 0):
         stack[-1].resume()
 
@@ -90,7 +94,7 @@ def run(start_state):
 
 
 def test_game_framework():
-    start_state = TestGameState('Logo')
+    start_state = TestGameState('StartState')
     run(start_state)
 
 
