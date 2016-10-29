@@ -1,7 +1,9 @@
 import random
+import json
 from pico2d import *
 
 class Enemy:
+
     image = None
 
     RUN = 0
@@ -36,7 +38,7 @@ class Tank:
 
     def handle_left_run(self):
         self.x += 0.2
-        if self.x > 700:
+        if self.x > 500:
             self.state = self.LEFT_RUN
             self.x = 700
 
@@ -64,3 +66,5 @@ class Tank:
 
     def draw(self):
         self.image.draw(self.x, self.y)
+
+
