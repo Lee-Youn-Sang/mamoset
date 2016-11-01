@@ -68,4 +68,31 @@ def draw():
     tank.draw()
     update_canvas()
 
+def main():
 
+    open_canvas()
+
+    global boy
+    global running
+
+    running = True
+
+    current_time = get_time()
+
+    while running:
+        handle_events()
+
+        clear_canvas()
+        update_canvas()
+
+        frame_time = get_time() - current_time
+        frame_rate = 1.0 / frame_time
+        print("Frame Rate: %f fps, Frame Time : %f sec, " %(frame_rate, frame_time))
+
+        current_time += frame_time
+
+    close_canvas()
+
+
+if __name__ == '__main__':
+    main()
