@@ -2,6 +2,7 @@ import game_framework
 import game
 from pico2d import *
 
+
 name = "Second_logo"
 image = None
 

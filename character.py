@@ -1,44 +1,47 @@
 from pico2d import *
-import game_framework
 
 class Lion:
-
-    image = None
-
-    JUMP, JUMP2 = 0, 1
+    image_init = None
 
     def __init__(self):
         self.x = 100
         self.y = 90
-        self.frame = 0
-        self.image = load_image('image\\lion.png')
+        self.frame = 1
+        self.state = "run"
+        self.jump_state = "up"
+
+        if self.image_init == None:
+            self.run = load_image('image\\lion.png')
+            self.jump = load_image('image\\lion_jump.png')
 
     def update(self):
-        self.frame = (self.frame) % 5
-        self.state = self.JUMP
-        if self.state == self.JUMP:
-            self.x = min(800, self.x + 50)
-        elif self.state == self.JUMP2:
-            self.x = max(0, self.x - 50)
+        self.frame += 1
+        if self.frame == 6:
+            self.frame = 1
+
+        if self.state == "jump" and self.jump_state == "up":
+            if self.y >= 400:
+                self.jump_state = "down"
+            self.y += 15
+
+        if self.state == "jump" and self.jump_state == "down":
+            if self.y >= 250:
+                self.y -= 15
+
+        if self.state == "jump" and self.y == 240:
+            self.state = "run"
+            self.jump_state = "up"
+
 
     def draw(self):
-        self.image.clip_draw(self.frame * 100, 0, 50, 80, self.x, self.y)
-
-    def handle_event(self, event):
-        if (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-            if self.state in (self.y, self.JUMP):
-                self.state = self.JUMP
+        if self.state == "run":
+            self.run.clip_draw(self.frame * 75, 0, 75, 87, self.x, self.y)
+        elif self.state == "jump":
+            self.jump.draw(self.x, self.y)
 
 
-def handle_events():
-    global running
-    global lion
-    events = get_events()
-    for event in events:
-        if event.type == SDL_QUIT:
-            running = False
-        elif (events.type == SDL_KEYDOWN and
-              event.key == SDLK_ESCAPE):
-            running = False
-        else:
-            lion.handle_event(event)
+
+
+
+
+

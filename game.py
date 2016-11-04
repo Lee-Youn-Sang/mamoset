@@ -40,18 +40,12 @@ def resume():
 
 
 def handle_events():
-
     events = get_events()
     for event in events:
-
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.change_state(second_logo)
-        else:
-            lion.handle_event(event)
-
-
 
 def update():
     lion.update()
