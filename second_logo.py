@@ -1,15 +1,17 @@
 import game_framework
-import game
+import main_state
+import logo
+
 from pico2d import *
 
 
-name = "Second_logo"
+name = "TitleState"
 image = None
 
 
 def enter():
     global image
-    image = load_image('image\\lion_il.png')
+    image = load_image('images\\lion_il.png')
 
 
 def exit():
@@ -23,10 +25,10 @@ def handle_events():
         if event.type == SDL_QUIT:
             game_framework.quit()
         else:
-            if(event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
+            if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-                game_framework.change_state(game)
+                game_framework.change_state(main_state)
 
 
 def draw():
