@@ -16,8 +16,11 @@ name = "MainState"
 lion = None
 background = None
 obstacle1 = None
+obstacle2 = None
 obstacle3 = None
-hurdle = None
+obstacle4 = None
+font = None
+score = 0
 current_time = 0.0
 
 def collide(a, b):
@@ -40,21 +43,24 @@ def get_frame_time():
     return frame_time
 
 def enter():
-    global lion, background, obstacle1, obstacle2, obstacle3, start
+    global lion, background, obstacle1, obstacle2, obstacle3, obstacle4, start, font
 
     lion = Lion("Run")
     background = Background(800, 600)
+    font = load_font('goindol.TTF')
     obstacle1 = OB1().create()
     obstacle2 = OB2().create()
     obstacle3 = OB3().create()
+    obstacle4 = OB4().create()
 
 
     start = time.time()
 
 def exit():
-    global lion, background, obstacle1, obstacle2, obstacle3, start
+    global lion, background, obstacle1, obstacle2, obstacle3, obstacle4, start, font
     del(lion)
     del(background)
+    del(font)
 
     for obstacle1 in obstacle1:
         obstacle1.remove(obstacle1)
@@ -68,10 +74,12 @@ def exit():
         obstacle3.remove(obstacle3)
         del(obstacle3)
 
+    for obstacle4 in obstacle4:
+        obstacle4.remove(obstacle4)
+        del(obstacle4)
+
 
     end = time.time()
-
-    print("Clear Time : ", (end - start))
 
 
 def pause():
@@ -97,7 +105,8 @@ def handle_events():
             lion.handle_events(event)
 
 def update():
-    global lion, background, obstacle1, obstacle2, obstacle3
+    global lion, background, obstacle1, obstacle2, obstacle3, obstacle4, score
+    score += 10
 
     frame_time = get_frame_time()
     lion.update()
@@ -118,27 +127,34 @@ def update():
         if collide(lion, Obstacle3) and lion.state != "Collide":
             lion.bump("Collide")
 
+    for Obstacle4 in obstacle4:
+        Obstacle4.update(frame_time)
+        if collide(lion, Obstacle4) and lion.state != "Collide":
+            lion.bump("Collide")
+
 
 def draw():
-    global lion, background, obstacle1, obstacle2, obstacle3
+    global lion, background, obstacle1, obstacle2, obstacle3, obstacle4, score
     clear_canvas()
     background.draw()
+    font.draw(650, 550, 'SCORE : %d' % score)
 
     for Obstacle1 in obstacle1:
         Obstacle1.draw()
-        #Obstacle1.draw_bb()
 
     for Obstacle2 in obstacle2:
         Obstacle2.draw()
-        #Obstacle2.draw_bb()
 
     for Obstacle3 in obstacle3:
         Obstacle3.draw()
-        #Obstacle3.draw_bb()
+
+    for Obstacle4 in obstacle4:
+        Obstacle4.draw()
+
 
 
     lion.draw()
-#    lion.draw_bb()
+
 
     delay(0.03)
     update_canvas()
