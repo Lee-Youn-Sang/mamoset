@@ -15,6 +15,10 @@ data_file3 = open('Data\\OB3.txt', 'r')
 data3 = json.load(data_file3)
 data_file3.close()
 
+data_file4 = open('Data\\OB4.txt', 'r')
+data4 = json.load(data_file4)
+data_file4.close()
+
 
 
 class Stage_SPEED:
@@ -158,3 +162,44 @@ class OB3:
 
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+
+
+class OB4:
+    image = None
+    state = "None"
+
+    def __init__(self):
+        self.x = 0
+        self.y = 0
+        if OB4.image == None:
+            self.Obsta4 = load_image('images\\Obstacle\\ob4.png')
+
+    def create(self):
+        obstacle_state_table = {
+            "Obsta4" : self.Obsta4
+        }
+        obstacle = []
+        for name in data4:
+            ob = OB4()
+            ob.name = name
+            ob.x = data4[name]['x']
+            ob.y = data4[name]['y']
+            ob.state = obstacle_state_table[data4[name]['state']]
+            obstacle.append(ob)
+
+        return obstacle
+
+    def update(self, frame_time):
+        if Stage_SPEED.RUN_SPEED_PPS * frame_time < 12:
+            self.distance = Stage_SPEED.RUN_SPEED_PPS * frame_time
+            self.x -= self.distance
+
+    def draw(self):
+        self.Obsta4.draw(self.x, self.y)
+
+    def draw_bb(self):
+        draw_rectangle(*self.get_bb())
+
+    def get_bb(self):
+        return self.x - 30, self.y - 20, self.x + 15, self.y + 30
+
