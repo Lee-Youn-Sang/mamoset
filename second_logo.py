@@ -11,7 +11,7 @@ image = None
 
 def enter():
     global image
-    image = load_image('images\\lion_il.png')
+    image = load_image('images\\Logo\\lion_il.png')
 
 
 def exit():

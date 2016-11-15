@@ -4,8 +4,6 @@ import second_logo
 
 class Lion:
     image = None
-    score_sound = None
-    hp_sound = None
     def __init__(self, state):
         self.x = 100
         self.y = 20

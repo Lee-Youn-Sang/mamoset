@@ -11,7 +11,7 @@ logo_time = 0.0
 
 def enter():
     global image, title
-    image = load_image('images\\LY_company.png')
+    image = load_image('images\\Logo\\LY_company.png')
 
 def exit():
     global image

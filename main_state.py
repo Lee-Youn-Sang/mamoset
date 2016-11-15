@@ -40,38 +40,34 @@ def get_frame_time():
     return frame_time
 
 def enter():
-    global lion, background, ground, obstacle1, obstacle3, hurdle, \
-            start
+    global lion, background, obstacle1, obstacle2, obstacle3, start
 
     lion = Lion("Run")
     background = Background(800, 600)
-    ground = Background(800, 150)
     obstacle1 = OB1().create()
+    obstacle2 = OB2().create()
     obstacle3 = OB3().create()
-    hurdle = Hurdle().create()
+
 
     start = time.time()
 
 def exit():
-    global lion, background, ground, obstacle1, obstacle3, hurdle, start
+    global lion, background, obstacle1, obstacle2, obstacle3, start
     del(lion)
     del(background)
-    del(ground)
 
-    for fork in obstacle1:
-        obstacle1.remove(fork)
-        del(fork)
-    del(obstacle1)
+    for obstacle1 in obstacle1:
+        obstacle1.remove(obstacle1)
+        del(obstacle1)
 
-    for thorn in obstacle3:
-        obstacle3.remove(thorn)
-        del(thorn)
-    del(obstacle3)
+    for obstacle2 in obstacle2:
+        obstacle2.remove(obstacle2)
+        del (obstacle2)
 
-    for thorn in hurdle:
-        double_thorn.remove(thorn)
-        del(thorn)
-    del(hurdle)
+    for obstacle3 in obstacle3:
+        obstacle3.remove(obstacle3)
+        del(obstacle3)
+
 
     end = time.time()
 
@@ -101,42 +97,45 @@ def handle_events():
             lion.handle_events(event)
 
 def update():
-    global lion, background, ground, obstacle1, obstacle3, hurdle
+    global lion, background, obstacle1, obstacle2, obstacle3
 
     frame_time = get_frame_time()
     lion.update()
     background.update(frame_time)
-    ground.update(frame_time)
 
-    for Fork in obstacle1:
-        Fork.update(frame_time)
-        if collide(lion, Fork) and lion.state != "Collide":
+    for Obstacle1 in obstacle1:
+        Obstacle1.update(frame_time)
+        if collide(lion, Obstacle1) and lion.state != "Collide":
             lion.bump("Collide")
-    for Thorn in obstacle3:
-        Thorn.update(frame_time)
-        if collide(lion, Thorn) and lion.state != "Collide":
+
+    for Obstacle2 in obstacle2:
+        Obstacle2.update(frame_time)
+        if collide(lion, Obstacle2) and lion.state != "Collide":
             lion.bump("Collide")
-    for Thorn in hurdle:
-        Thorn.update(frame_time)
-        if collide(lion, Thorn) and lion.state != "Collide":
+
+    for Obstacle3 in obstacle3:
+        Obstacle3.update(frame_time)
+        if collide(lion, Obstacle3) and lion.state != "Collide":
             lion.bump("Collide")
-            #Thorn.bump("Collide")
+
 
 def draw():
-    global lion, background, ground, obstacle1, obstacle3, hurdle
+    global lion, background, obstacle1, obstacle2, obstacle3
     clear_canvas()
     background.draw()
-    ground.ground_draw()
 
-    for Fork in obstacle1:
-        Fork.draw()
-        #Fork.draw_bb()
-    for Thorn in obstacle3:
-        Thorn.draw()
-        #Thorn.draw_bb()
-    for Thorn in hurdle:
-        Thorn.draw()
-        #Thorn.draw_bb()
+    for Obstacle1 in obstacle1:
+        Obstacle1.draw()
+        #Obstacle1.draw_bb()
+
+    for Obstacle2 in obstacle2:
+        Obstacle2.draw()
+        #Obstacle2.draw_bb()
+
+    for Obstacle3 in obstacle3:
+        Obstacle3.draw()
+        #Obstacle3.draw_bb()
+
 
     lion.draw()
 #    lion.draw_bb()

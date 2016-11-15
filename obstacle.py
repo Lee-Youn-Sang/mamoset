@@ -3,17 +3,17 @@ import json
 
 running = None
 
-obstacle_data_file1_1 = open('Stage_Data\\OB1.txt', 'r')
-obstacle_data1_1 = json.load(obstacle_data_file1_1)
-obstacle_data_file1_1.close()
+data_file1 = open('Data\\OB1.txt', 'r')
+data1 = json.load(data_file1)
+data_file1.close()
 
-obstacle_data_file1_2 = open('Stage_Data\\OB3.txt', 'r')
-obstacle_data1_2 = json.load(obstacle_data_file1_2)
-obstacle_data_file1_2.close()
+data_file2 = open('Data\\OB3.txt', 'r')
+data2 = json.load(data_file2)
+data_file2.close()
 
-obstacle_data_file1_4 = open('Stage_Data\\Hurdle.txt', 'r')
-obstacle_data1_4 = json.load(obstacle_data_file1_4)
-obstacle_data_file1_4.close()
+data_file3 = open('Data\\Hurdle.txt', 'r')
+data3 = json.load(data_file3)
+data_file3.close()
 
 class Stage_SPEED:
     PIXEL_PER_METER = (10.0 / 0.3)
@@ -31,19 +31,19 @@ class OB1:
         self.x = 0
         self.y = 0
         if OB1.image == None:
-            self.Fork = load_image('images\\Map\\map\\ob1.png')
+            self.Fork = load_image('images\\Obstacle\\ob1.png')
 
     def create(self):
         obstacle_state_table = {
             "Fork" : self.Fork
         }
         obstacle = []
-        for name in obstacle_data1_1:
+        for name in data1:
             ob = OB1()
             ob.name = name
-            ob.x = obstacle_data1_1[name]['x']
-            ob.y = obstacle_data1_1[name]['y']
-            ob.state = obstacle_state_table[obstacle_data1_1[name]['state']]
+            ob.x = data1[name]['x']
+            ob.y = data1[name]['y']
+            ob.state = obstacle_state_table[data1[name]['state']]
             obstacle.append(ob)
 
         return obstacle
@@ -70,7 +70,7 @@ class OB3:
         self.x = 0
         self.y = 0
         if OB3.image == None:
-            self.Thorn = load_image('images\\Map\\map\\ob3.png')
+            self.Thorn = load_image('images\\Obstacle\\ob3.png')
 
     def create(self):
         obstacle_state_table = {
@@ -78,12 +78,12 @@ class OB3:
         }
 
         obstacle = []
-        for name in obstacle_data1_2:
+        for name in data2:
             ob = OB3()
             ob.name = name
-            ob.x = obstacle_data1_2[name]['x']
-            ob.y = obstacle_data1_2[name]['y']
-            ob.state = obstacle_state_table[obstacle_data1_2[name]['state']]
+            ob.x = data2[name]['x']
+            ob.y = data2[name]['y']
+            ob.state = obstacle_state_table[data2[name]['state']]
             obstacle.append(ob)
 
         return obstacle
@@ -94,7 +94,7 @@ class OB3:
             self.x -= self.distance
 
     def draw(self):
-        self.Thorn.draw(self.x, self.y)
+        self.Thorn.draw(self.x, self.y + 10)
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
@@ -102,7 +102,7 @@ class OB3:
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
 
-class Hurdle:
+class OB2:
     image = None
 
     def __init__(self):
@@ -110,8 +110,8 @@ class Hurdle:
         self.y = 0
         self.state = "None"
         self.collision_time = 0
-        if Hurdle.image == None:
-            self.Thorn = load_image('images\\Map\\map\\Hurdle.png')
+        if OB2.image == None:
+            self.Thorn = load_image('images\\Obstacle\\ob2.png')
 
     def create(self):
         obstacle_state_table = {
@@ -119,12 +119,12 @@ class Hurdle:
         }
 
         obstacle = []
-        for name in obstacle_data1_4:
-            ob = Hurdle()
+        for name in data3:
+            ob = OB2()
             ob.name = name
-            ob.x = obstacle_data1_4[name]['x']
-            ob.y = obstacle_data1_4[name]['y']
-            ob.state = obstacle_state_table[obstacle_data1_4[name]['state']]
+            ob.x = data3[name]['x']
+            ob.y = data3[name]['y']
+            ob.state = obstacle_state_table[data3[name]['state']]
             obstacle.append(ob)
 
         return obstacle
