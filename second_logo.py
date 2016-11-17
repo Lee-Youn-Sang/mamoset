@@ -1,11 +1,12 @@
 import game_framework
 import main_state
 import logo
+import How_to_play
 
 from pico2d import *
 
 
-name = "TitleState"
+name = "Second_logo"
 image = None
 
 
@@ -20,6 +21,7 @@ def exit():
 
 
 def handle_events():
+    global x, y
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -27,9 +29,13 @@ def handle_events():
         else:
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
-            elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-                game_framework.change_state(main_state)
-
+            elif event.type == SDL_MOUSEMOTION:
+                x, y = event.x, 600 - event.y
+            if event.type == SDL_MOUSEBUTTONDOWN and event.button == SDL_BUTTON_LEFT:
+                if 110 < x < 292 and 125 < y < 172:
+                    game_framework.change_state(main_state)
+                elif 110 < x < 292 and 58 < y < 100:
+                    game_framework.change_state(How_to_play)
 
 def draw():
     clear_canvas()
