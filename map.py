@@ -18,14 +18,17 @@ class Background:
         self.width = w
         self.height = h
         self.Background = load_image('images\\Map\\backg.png')
+        self.bgm = load_music('sound\\football.mp3')
+        self.bgm.set_volume(64)
+        self.bgm.repeat_play()
 
 
     def draw(self):
         x = int(self.left)
         w = min(self.Background.w - x, self.width)
         self.Background.clip_draw_to_origin(x, 0, w, self.height, 0, 0)
-        self.Background.clip_draw_to_origin(0, 0, self.width-w, self.height, w, 0)
+        self.Background.clip_draw_to_origin(0, 0, self.width - w, self.height, w, 0)
 
     def update(self, frame_time):
-        self.speed = 100
+        self.speed = 1000
         self.left = (self.left + frame_time * self.speed) % self.Background.w
