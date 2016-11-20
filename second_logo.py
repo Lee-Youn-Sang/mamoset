@@ -27,9 +27,7 @@ def handle_events():
         if event.type == SDL_QUIT:
             game_framework.quit()
         else:
-            if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
-                game_framework.quit()
-            elif event.type == SDL_MOUSEMOTION:
+            if event.type == SDL_MOUSEMOTION:
                 x, y = event.x, 600 - event.y
             if event.type == SDL_MOUSEBUTTONDOWN and event.button == SDL_BUTTON_LEFT:
                 if 110 < x < 292 and 125 < y < 172:
