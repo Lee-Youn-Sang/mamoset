@@ -4,22 +4,24 @@ import os
 import time
 
 from pico2d import *
-from lion import *
+from ryan import *
 from map import *
 from obstacle import *
 import game_framework
 import second_logo
+import How_to_play
 
 
 name = "MainState"
 
-lion = None
+ryan = None
 background = None
 obstacle1 = None
 obstacle2 = None
 obstacle3 = None
 obstacle4 = None
 font = None
+
 score = 0
 current_time = 0.0
 
@@ -43,9 +45,9 @@ def get_frame_time():
     return frame_time
 
 def enter():
-    global lion, background, obstacle1, obstacle2, obstacle3, obstacle4, start, font
+    global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, start, font
 
-    lion = Lion("Run")
+    ryan = Ryan("Run")
     background = Background(800, 600)
     font = load_font('goindol.TTF')
     obstacle1 = OB1().create()
@@ -57,8 +59,8 @@ def enter():
     start = time.time()
 
 def exit():
-    global lion, background, obstacle1, obstacle2, obstacle3, obstacle4, start, font
-    del(lion)
+    global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, start, font
+    del(ryan)
     del(background)
     del(font)
 
@@ -91,7 +93,7 @@ def resume():
 
 
 def handle_events():
-    global lion
+    global ryan
     events = get_events()
 
     for event in events:
@@ -102,42 +104,43 @@ def handle_events():
             game_framework.change_state(second_logo)
 
         else:
-            lion.handle_events(event)
+            ryan.handle_events(event)
 
 def update():
-    global lion, background, obstacle1, obstacle2, obstacle3, obstacle4, score
+    global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, score
     score += 10
 
     frame_time = get_frame_time()
-    lion.update()
+    ryan.update()
     background.update(frame_time)
 
     for Obstacle1 in obstacle1:
         Obstacle1.update(frame_time)
-        if collide(lion, Obstacle1) and lion.state != "Collide":
-            lion.bump("Collide")
+        if collide(ryan, Obstacle1) and ryan.state != "Collide":
+            ryan.bump("Collide")
 
     for Obstacle2 in obstacle2:
         Obstacle2.update(frame_time)
-        if collide(lion, Obstacle2) and lion.state != "Collide":
-            lion.bump("Collide")
+        if collide(ryan, Obstacle2) and ryan.state != "Collide":
+            ryan.bump("Collide")
 
     for Obstacle3 in obstacle3:
         Obstacle3.update(frame_time)
-        if collide(lion, Obstacle3) and lion.state != "Collide":
-            lion.bump("Collide")
+        if collide(ryan, Obstacle3) and ryan.state != "Collide":
+            ryan.bump("Collide")
 
     for Obstacle4 in obstacle4:
         Obstacle4.update(frame_time)
-        if collide(lion, Obstacle4) and lion.state != "Collide":
-            lion.bump("Collide")
+        if collide(ryan, Obstacle4) and ryan.state != "Collide":
+            ryan.bump("Collide")
 
 
 def draw():
-    global lion, background, obstacle1, obstacle2, obstacle3, obstacle4, score
+    global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, score, font
     clear_canvas()
     background.draw()
     font.draw(650, 550, 'SCORE : %d' % score)
+    font.draw(490, 550, '< Ryan Runner!! >')
 
     for Obstacle1 in obstacle1:
         Obstacle1.draw()
@@ -153,7 +156,7 @@ def draw():
 
 
 
-    lion.draw()
+    ryan.draw()
 
 
     delay(0.03)
