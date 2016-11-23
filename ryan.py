@@ -12,14 +12,13 @@ class Ryan:
         self.jump = 0
         self.jump_gravity = 0
         self.collision_time = 0
-        self.state = state
         self.state = "Run"
 
         if Ryan.image == None:
             self.Ryan_run = load_image('images\\Character\\ryan_run.png')
             self.Ryan_slide = load_image('images\\Character\\ryan_slide.png')
-            self.Ryan_jump1 = load_image('images\\Character\\ryan_jump.png')
-            self.Ryan_jump2 = load_image('images\\Character\\ryan_jump2.png')
+            self.Ryan_jump1 = load_image('images\\Character\\ryan_leapjump.png')
+            self.Ryan_jump2 = load_image('images\\Character\\ryan_hugjump.png')
             self.Ryan_collide = load_image('images\\Character\\ryan_collid.png')
 
     def bump(self, state):
@@ -48,7 +47,7 @@ class Ryan:
         elif self.state == "Collide":
             self.bump("Collide")
 
-        if self.state == "Jump" and (self.map_size >= 1440 and self.map_size <= 1550):
+        if self.state == "Jump" and (self.map_size >= 1440 and self.map_size <= 2000):
             if (self.y - 40 - self.jump_gravity) > 210:
                 self.jump_gravity += 2
                 self.y -= self.jump_gravity / 2

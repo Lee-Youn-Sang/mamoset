@@ -45,7 +45,7 @@ def get_frame_time():
     return frame_time
 
 def enter():
-    global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, start, font
+    global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, font
 
     ryan = Ryan("Run")
     background = Background(800, 600)
@@ -55,11 +55,8 @@ def enter():
     obstacle3 = OB3().create()
     obstacle4 = OB4().create()
 
-
-    start = time.time()
-
 def exit():
-    global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, start, font
+    global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, font
     del(ryan)
     del(background)
     del(font)
