@@ -10,7 +10,7 @@ class Ryan:
         self.frame = 0
         self.map_size = 0
         self.jump = 0
-        self.strength = 0
+        self.jump_gravity = 0
         self.collision_time = 0
         self.state = state
         self.state = "Run"
@@ -37,7 +37,7 @@ class Ryan:
         if self.map_size > 2000:
             self.map_size = 0
 
-        self.strength()
+        self.gravity()
         if self.state == "Run":
             self.map_size += 1
             self.frame = (self.frame + 1) % 6
@@ -49,21 +49,21 @@ class Ryan:
             self.bump("Collide")
 
         if self.state == "Jump" and (self.map_size >= 1440 and self.map_size <= 1550):
-            if (self.y - 40 - self.strength) > 210:
-                self.strength += 2
-                self.y -= self.strength / 2
+            if (self.y - 40 - self.jump_gravity) > 210:
+                self.jump_gravity += 2
+                self.y -= self.jump_gravity / 2
             else:
                 self.y = 250
-                self.strength = 0
+                self.jump_gravity = 0
         print("size : ", self.map_size)
 
     def gravity(self):
-        if (self.y - 40 - self.strength) > 160:
+        if (self.y - 40 - self.jump_gravity) > 160:
             self.jump_gravity += 2
-            self.y -= self.strength / 2
+            self.y -= self.jump_gravity / 2
         else:
             self.y = 200
-            self.strength = 0
+            self.jump_gravity = 0
 
     def draw(self):
         if self.state == "Run":
