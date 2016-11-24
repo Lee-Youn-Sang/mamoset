@@ -25,6 +25,8 @@ font = None
 score = 0
 current_time = 0.0
 
+# collide definition
+
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
@@ -88,6 +90,7 @@ def pause():
 def resume():
     pass
 
+# Press 'esc' to change second_logo
 
 def handle_events():
     global ryan
@@ -102,6 +105,9 @@ def handle_events():
 
         else:
             ryan.handle_events(event)
+
+
+# update class (ryan, obstacles)
 
 def update():
     global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, score
@@ -131,6 +137,7 @@ def update():
         if collide(ryan, Obstacle4) and ryan.state != "Collide":
             ryan.bump("Collide")
 
+# draw class
 
 def draw():
     global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, score, font

@@ -19,6 +19,8 @@ def exit():
     global image
     del(image)
 
+# press left mouse button to change main_state.py
+# press left mouse button to change How_to_play.py
 
 def handle_events():
     global x, y
