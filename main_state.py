@@ -25,7 +25,7 @@ font = None
 score = 0
 current_time = 0.0
 
-# collide definition
+# collide definiton
 
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
@@ -69,7 +69,7 @@ def exit():
 
     for obstacle2 in obstacle2:
         obstacle2.remove(obstacle2)
-        del (obstacle2)
+        del(obstacle2)
 
     for obstacle3 in obstacle3:
         obstacle3.remove(obstacle3)
@@ -90,7 +90,6 @@ def pause():
 def resume():
     pass
 
-# Press 'esc' to change second_logo
 
 def handle_events():
     global ryan
@@ -106,8 +105,6 @@ def handle_events():
         else:
             ryan.handle_events(event)
 
-
-# update class (ryan, obstacles)
 
 def update():
     global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, score
@@ -143,8 +140,9 @@ def draw():
     global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, score, font
     clear_canvas()
     background.draw()
+
     font.draw(650, 550, 'SCORE : %d' % score)
-    font.draw(490, 550, '< Ryan Runner!! >')
+    font.draw(490, 550, '<< Ryan Runner!! >>')
 
     for Obstacle1 in obstacle1:
         Obstacle1.draw()
