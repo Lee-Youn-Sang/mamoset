@@ -25,8 +25,6 @@ font = None
 score = 0
 current_time = 0.0
 
-# collide definiton
-
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
@@ -37,6 +35,8 @@ def collide(a, b):
     if bottom_a > top_b: return False
 
     return True
+
+# Calculate frame_time
 
 def get_frame_time():
 
