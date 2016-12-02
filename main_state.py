@@ -107,6 +107,7 @@ def handle_events():
         else:
             ryan.handle_events(event)
 
+# class update
 
 def update():
     global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, score
