@@ -9,7 +9,6 @@ from map import *
 from obstacle import *
 import game_framework
 import second_logo
-import How_to_play
 
 
 name = "MainState"
@@ -25,8 +24,9 @@ font = None
 score = 0
 current_time = 0.0
 
-# collide definition
 
+# 원인을 알 수 없는 error......
+# 차후 고치기
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
@@ -58,6 +58,8 @@ def enter():
     obstacle2 = OB2().create()
     obstacle3 = OB3().create()
     obstacle4 = OB4().create()
+
+    start = time.time()
 
 def exit():
     global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, font
@@ -148,21 +150,17 @@ def draw():
     font.draw(490, 550, '<< Ryan Runner!! >>')
 
     for Obstacle1 in obstacle1:
-        Obstacle1.draw()
+        Obstacle1.draw_bb()
 
     for Obstacle2 in obstacle2:
-        Obstacle2.draw()
+        Obstacle2.draw_bb()
 
     for Obstacle3 in obstacle3:
-        Obstacle3.draw()
+        Obstacle3.draw_bb()
 
     for Obstacle4 in obstacle4:
-        Obstacle4.draw()
+        Obstacle4.draw_bb()
 
-
-
-    ryan.draw()
-
-
+    ryan.draw_bb()
     delay(0.03)
     update_canvas()
