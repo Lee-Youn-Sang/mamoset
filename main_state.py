@@ -26,7 +26,7 @@ current_time = 0.0
 
 
 # 원인을 알 수 없는 error......
-# 차후 고치기
+# 차후 고치기 (미치겠다...)
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
