@@ -24,9 +24,6 @@ font = None
 score = 0
 current_time = 0.0
 
-
-# 원인을 알 수 없는 error......
-# 차후 고치기 (미치겠다...)
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
@@ -146,7 +143,7 @@ def draw():
     clear_canvas()
     background.draw()
 
-    font.draw(650, 550, 'SCORE : %d' % score)
+    font.draw(680, 550, 'SCORE : %d' % score)
     font.draw(490, 550, '<< Ryan Runner!! >>')
 
     for Obstacle1 in obstacle1:
