@@ -24,6 +24,8 @@ font = None
 score = 0
 current_time = 0.0
 
+# After, collide range modify by me
+
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
