@@ -24,6 +24,7 @@ font = None
 score = 0
 current_time = 0.0
 
+# amola amola
 # After, collide range modify by me
 
 def collide(a, b):
