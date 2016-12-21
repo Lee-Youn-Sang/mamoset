@@ -10,17 +10,17 @@ from obstacle import *
 import game_framework
 import second_logo
 
-
+#####
 name = "MainState"
 
 ryan = None
 background = None
+
+font = None
 obstacle1 = None
 obstacle2 = None
 obstacle3 = None
 obstacle4 = None
-font = None
-
 score = 0
 current_time = 0.0
 
@@ -50,7 +50,7 @@ def get_frame_time():
 def enter():
     global ryan, background, obstacle1, obstacle2, obstacle3, obstacle4, font
 
-    ryan = Ryan("Run")
+    ryan = Ryan()
     background = Background(800, 600)
     font = load_font('goindol.TTF')
     obstacle1 = OB1().create()
@@ -67,19 +67,15 @@ def exit():
     del(font)
 
     for obstacle1 in obstacle1:
-        obstacle1.remove(obstacle1)
         del(obstacle1)
 
     for obstacle2 in obstacle2:
-        obstacle2.remove(obstacle2)
         del(obstacle2)
 
     for obstacle3 in obstacle3:
-        obstacle3.remove(obstacle3)
         del(obstacle3)
 
     for obstacle4 in obstacle4:
-        obstacle4.remove(obstacle4)
         del(obstacle4)
 
 
@@ -121,22 +117,22 @@ def update():
     for Obstacle1 in obstacle1:
         Obstacle1.update(frame_time)
         if collide(ryan, Obstacle1) and ryan.state != "Collide":
-            ryan.bump("Collide")
+            ryan.bumping("Collide")
 
     for Obstacle2 in obstacle2:
         Obstacle2.update(frame_time)
         if collide(ryan, Obstacle2) and ryan.state != "Collide":
-            ryan.bump("Collide")
+            ryan.bumping("Collide")
 
     for Obstacle3 in obstacle3:
         Obstacle3.update(frame_time)
         if collide(ryan, Obstacle3) and ryan.state != "Collide":
-            ryan.bump("Collide")
+            ryan.bumping("Collide")
 
     for Obstacle4 in obstacle4:
         Obstacle4.update(frame_time)
         if collide(ryan, Obstacle4) and ryan.state != "Collide":
-            ryan.bump("Collide")
+            ryan.bumping("Collide")
 
 # draw class
 
