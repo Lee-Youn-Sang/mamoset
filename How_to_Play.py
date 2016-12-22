@@ -1,62 +1,45 @@
+import game_framework
+import second_logo
 from pico2d import *
 
-class Background1:
+name = "How"
 
-    PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
-    SCROLL_SPEED_KMPH = 20.0                    # Km / Hour
-    SCROLL_SPEED_MPM = (SCROLL_SPEED_KMPH * 1000.0 / 60.0)
-    SCROLL_SPEED_MPS = (SCROLL_SPEED_MPM / 60.0)
-    SCROLL_SPEED_PPS = (SCROLL_SPEED_MPS * PIXEL_PER_METER)
+image = None
 
-    def __init__(self, w, h):
-        self.image = load_image('Resource\\Map\\Spring.png')
-        self.speed = 0
-        self.left = 0
-        self.screen_width = w
-        self.screen_height = h
+def enter():
+    global image
+    image = load_image('Resource\\Logo\\How to play.png')
 
-        self.bgm = load_music('Resource\\Sound\\Spring_Song.mp3')
-        self.bgm.set_volume(30)
-        self.bgm.repeat_play()
+def exit():
+    pass
 
-    def draw(self):
-        x = int(self.left)
-        w = min(self.image.w - x, self.screen_width)
-        self.image.clip_draw_to_origin(x, 0, w, self.screen_height, 0, 0)
-        self.image.clip_draw_to_origin(0, 0, self.screen_width-w, self.screen_height, w, 0)
+def update():
+   pass
 
-    def update(self, frame_time):
-        self.left = (self.left + frame_time * self.speed) % self.image.w
-        self.speed = 100
+def draw():
+    global image
+    clear_canvas()
+    image.draw(400, 300)
+    update_canvas()
 
+def handle_events():
+    global x,y
+    events = get_events()
+    for event in events:
+        if event.type == SDL_QUIT:
+            game_framework.quit()
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+            game_framework.change_state(second_logo)
 
+        if event.type == SDL_MOUSEMOTION:
+            x,y = event.x, 600 - event.y
+        if event.type == SDL_MOUSEBUTTONDOWN and event.button ==  SDL_BUTTON_LEFT:
+            if 720< x and x <840 and 40<y and y<90:
+                game_framework.change_state(second_logo)
 
-class Background2:
+def pause():
+    pass
 
-    PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
-    SCROLL_SPEED_KMPH = 30.0                    # Km / Hour
-    SCROLL_SPEED_MPM = (SCROLL_SPEED_KMPH * 1000.0 / 60.0)
-    SCROLL_SPEED_MPS = (SCROLL_SPEED_MPM / 60.0)
-    SCROLL_SPEED_PPS = (SCROLL_SPEED_MPS * PIXEL_PER_METER)
+def resume():
+    pass
 
-    def __init__(self, w, h):
-        self.background2 = load_image('Resource\\Map\\Sky.png')
-        self.speed = 0
-        self.left = 0
-        self.screen_width = w
-        self.screen_height = h
-
-        self.bgm = load_music('Resource\\Sound\\Skycastle_Laputa.mp3')
-        self.bgm.set_volume(50)
-        self.bgm.repeat_play()
-
-    def draw(self):
-        x = int(self.left)
-        w = min(self.background2.w - x, self.screen_width)
-        self.background2.clip_draw_to_origin(x, 0, w, self.screen_height, 0, 0)
-        self.background2.clip_draw_to_origin(0, 0, self.screen_width-w, self.screen_height, w, 0)
-
-    def update(self, frame_time):
-
-        self.left = (self.left + frame_time * self.speed) % self.background2.w
-        self.speed = 100
