@@ -1,0 +1,6 @@
+{
+    "hp_heart1"   : {"state" : "Hp", "x"  : 3700, "y" : 200},
+    "hp_heart2"   : {"state" : "Hp", "x"  : 8100, "y" : 200},
+    "hp_heart3"   : {"state" : "Hp", "x"  : 11700, "y" : 200},
+    "hp_heart4"   : {"state" : "Hp", "x"  : 16000, "y" : 200}
+}

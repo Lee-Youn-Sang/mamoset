@@ -1,0 +1,12 @@
+{
+    "Obsta31"   : {"state" : "Obsta3", "x"  : 1500, "y" : 175},
+    "Obsta32"   : {"state" : "Obsta3", "x"  : 2550, "y" : 175},
+    "Obsta33"   : {"state" : "Obsta3", "x"  : 3500, "y" : 175},
+    "Obsta34"   : {"state" : "Obsta3", "x"  : 6900, "y" : 175},
+    "Obsta35"   : {"state" : "Obsta3", "x"  : 8200, "y" : 175},
+    "Obsta36"   : {"state" : "Obsta3", "x"  : 9500, "y" : 175},
+    "Obsta37"   : {"state" : "Obsta3", "x"  : 11020, "y" : 175},
+    "Obsta38"   : {"state" : "Obsta3", "x"  : 12800, "y" : 175},
+    "Obsta39"   : {"state" : "Obsta3", "x"  : 13460, "y" : 175},
+    "Obsta310"   : {"state" : "Obsta3", "x"  : 15100, "y" : 175}
+}

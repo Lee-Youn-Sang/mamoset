@@ -1,0 +1,10 @@
+{
+    "Obsta11"   : {"state" : "Obsta1", "x"  : 800, "y" : 430},
+    "Obsta12"   : {"state" : "Obsta1", "x"  : 3000, "y" : 430},
+    "Obsta13"   : {"state" : "Obsta1", "x"  : 5400, "y" : 430},
+    "Obsta14"   : {"state" : "Obsta1", "x"  : 7900, "y" : 430},
+    "Obsta15"   : {"state" : "Obsta1", "x"  : 8850, "y" : 430},
+    "Obsta16"   : {"state" : "Obsta1", "x"  : 10000, "y" : 430},
+    "Obsta17"   : {"state" : "Obsta1", "x"  : 12200, "y" : 430},
+    "Obsta18"   : {"state" : "Obsta1", "x"  : 19000, "y" : 430}
+}

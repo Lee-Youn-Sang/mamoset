@@ -1,0 +1,21 @@
+{
+    "Obsta41"   : {"state" : "Obsta4", "x"  : 450, "y" : 200},
+    "Obsta42"   : {"state" : "Obsta4", "x"  : 1800, "y" : 200},
+    "Obsta43"   : {"state" : "Obsta4", "x"  : 4250, "y" : 200},
+    "Obsta44"   : {"state" : "Obsta4", "x"  : 5060, "y" : 200},
+    "Obsta45"   : {"state" : "Obsta4", "x"  : 6550, "y" : 200},
+    "Obsta46"   : {"state" : "Obsta4", "x"  : 7550, "y" : 200},
+    "Obsta47"   : {"state" : "Obsta4", "x"  : 8500, "y" : 200},
+    "Obsta48"   : {"state" : "Obsta4", "x"  : 9750, "y" : 200},
+    "Obsta49"   : {"state" : "Obsta4", "x"  : 10800, "y" : 200},
+    "Obsta410"   : {"state" : "Obsta4", "x"  : 11320, "y" : 200},
+    "Obsta411"   : {"state" : "Obsta4", "x"  : 12500, "y" : 200},
+    "Obsta412"   : {"state" : "Obsta4", "x"  : 13800, "y" : 200},
+    "Obsta413"   : {"state" : "Obsta4", "x"  : 14760, "y" : 200},
+    "Obsta414"   : {"state" : "Obsta4", "x"  : 15450, "y" : 200},
+    "Obsta415"   : {"state" : "Obsta4", "x"  : 15780, "y" : 200},
+    "Obsta416"   : {"state" : "Obsta4", "x"  : 16800, "y" : 200},
+    "Obsta417"   : {"state" : "Obsta4", "x"  : 17600, "y" : 200},
+    "Obsta418"   : {"state" : "Obsta4", "x"  : 18000, "y" : 200}
+
+}
