@@ -83,7 +83,7 @@ def resume():
 
 
 def handle_events():
-    global cookie
+    global lion
     events = get_events()
 
     for event in events:
